@@ -172,33 +172,6 @@
         </div>
     </div>
 
-    <!-- Login Modal -->
-    <div class="modal-overlay" id="loginModal">
-        <div class="login-modal">
-            <div class="modal-header">
-                <h3>Log in to StackIt</h3>
-                <button class="close-modal" id="closeLoginModal">&times;</button>
-            </div>
-            <div class="modal-body">
-                <div class="form-group">
-                    <label for="loginEmail">Email</label>
-                    <input type="email" id="loginEmail" placeholder="your@email.com">
-                </div>
-                <div class="form-group">
-                    <label for="loginPassword">Password</label>
-                    <input type="password" id="loginPassword" placeholder="••••••••">
-                </div>
-            </div>
-            <div class="modal-footer">
-                <div class="auth-links">
-                    <a href="#">Forgot password?</a>
-                    <span> • </span>
-                    <a href="#">Sign up</a>
-                </div>
-                <button class="submit-btn" id="loginSubmit">Log in</button>
-            </div>
-        </div>
-    </div>
     
     <script>
         // Basic functionality
@@ -248,52 +221,6 @@
                     }
                 }
             });
-        });
-
-        // Login Modal functionality
-        const loginModal = document.getElementById('loginModal');
-        const openLoginModalBtn = document.getElementById('openLoginModal');
-        const closeLoginModalBtn = document.getElementById('closeLoginModal');
-        const loginSubmitBtn = document.getElementById('loginSubmit');
-
-        openLoginModalBtn.addEventListener('click', () => {
-            loginModal.style.display = 'flex';
-            document.body.style.overflow = 'hidden'; // Prevent scrolling when modal is open
-        });
-
-        closeLoginModalBtn.addEventListener('click', () => {
-            loginModal.style.display = 'none';
-            document.body.style.overflow = 'auto';
-        });
-
-        loginSubmitBtn.addEventListener('click', () => {
-            const email = document.getElementById('loginEmail').value;
-            const password = document.getElementById('loginPassword').value;
-            
-            if (email && password) {
-                alert(`Logging in with email: ${email}`);
-                loginModal.style.display = 'none';
-                document.body.style.overflow = 'auto';
-                
-                // In a real app, you would replace the auth buttons with user info
-                const authSection = document.querySelector('.auth-section');
-                authSection.innerHTML = `
-                    <div class="user-dropdown">
-                        <div class="user-avatar small">${email.charAt(0).toUpperCase()}</div>
-                        <span style="color: white; font-weight: 500;">${email.split('@')[0]}</span>
-                    </div>
-                `;
-            } else {
-                alert('Please enter both email and password');
-            }
-        });
-
-        // Close modal when clicking outside
-        window.addEventListener('click', (e) => {
-            if (e.target === loginModal) {
-                loginModal.style.display = 'none';
-                document.body.style.overflow = 'auto';
-            }
         });
     </script>
 </body>

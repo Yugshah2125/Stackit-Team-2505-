@@ -1,140 +1,185 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <title>StackIt - Q&A</title>
-  <link rel="stylesheet" href="style.css">
-  <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
-  <!-- Quill Script -->
-  <script src="https://cdn.quilljs.com/1.3.6/quill.min.js"></script>
-
+    <meta charset="UTF-8">
+    <title>StackIt - Q&A</title>
+    <link rel="stylesheet" href="answer.css">
+    <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+    <script src="https://cdn.quilljs.com/1.3.6/quill.min.js"></script>
 </head>
+
 <body>
-  <header>
-    <div class="logo">
-      <img src="Stacks-removebg-preview.png" alt="StackIt logo">
-      StackIt
-    </div>
-    <nav>
-      <a href="#">About</a>
-      <a href="#">For Teams</a>
-      <div class="notification">
-        <span class="notification-bell">🔔</span>
-        <span class="notification-dot"></span>
-      </div>
-      <div class="auth-section">
-        <button class="login-btn" id="openLoginModal">Log in</button>
-        <button class="signup-btn">Sign up</button>
-      </div>
-    </nav>
-  </header>
-
-  <div class="container">
-
-    <!-- Breadcrumb -->
-    <div class="breadcrumb">Question &gt; How to join 2…</div>
-
-    <!-- Question Display -->
-    <h2>How to join 2 columns in a data set to make a separate column in SQL</h2>
-    <span class="tags">sql</span>
-    <span class="tags">join</span>
-    <span class="tags">beginner</span>
-
-    <div class="question-desc">
-      I do not know the code for it as I am a beginner. As an example what I need to do is like there is a column 1 containing First name and column 2 consists of last name. I want a column to combine
-    </div>
-
-    <!-- Answers Section -->
-    <div class="answers-title">Answers</div>
-
-    <div class="answer-block">
-      <div class="votes">
-        <button class="vote-btn">&#9650;</button>
-        <div class="vote-count">1</div>
-        <button class="vote-btn">&#9660;</button>
-      </div>
-      <div class="answer-content">
-        <div><strong>Answer 1</strong></div>
-        <div>
-          You can use SQL functions to combine two columns:
-          <ul>
-            <li><code>SELECT FirstName || ' ' || LastName AS FullName FROM your_table;</code> (for PostgreSQL, SQLite)</li>
-            <li><code>SELECT CONCAT(FirstName, ' ', LastName) AS FullName FROM your_table;</code> (for MySQL, SQL Server)</li>
-          </ul>
+    <header>
+        <div class="logo">
+            <img src="Stacks-removebg-preview.png" alt="StackIt logo">
+            StackIt
         </div>
-      </div>
-    </div>
+        <nav>
+            <a href="#">About</a>
+            <a href="#">For Teams</a>
+            <div class="notification">
+                <span class="notification-bell">🔔</span>
+                <span class="notification-dot"></span>
+            </div>
+            <div class="auth-section">
+                <button class="login-btn" id="openLoginModal">Log in</button>
+                <button class="signup-btn">Sign up</button>
+            </div>
+        </nav>
+    </header>
 
-    <div class="answer-block">
-      <div class="votes">
-        <button class="vote-btn">&#9650;</button>
-        <div class="vote-count">0</div>
-        <button class="vote-btn">&#9660;</button>
-      </div>
-      <div class="answer-content">
-        <div><strong>Answer 2</strong></div>
-        <div class="details-link">Details</div>
-      </div>
-    </div>
+    <div class="container">
+        <!-- Breadcrumb -->
+        <div class="breadcrumb" id="breadcrumb">Question &gt; ...</div>
 
-    <!-- Submit Answer -->
-    <div class="submit-section">
-      <div class="submit-title">Submit Your Answer</div>
-      <form>
-        <div id="quill-editor" style="height: 200px;"></div>
-        <br>
-        <button class="submit-btn" type="submit">Submit</button>
-        <input type="hidden" name="content" id="quill-content">
-      </form>
-    </div>
-  </div>
+        <!-- Question Display -->
+        <h2 id="question-title">Loading...</h2>
+        <div id="question-tags"></div>
+        <div class="question-desc" id="question-desc">Please wait...</div>
 
-  <!-- Footer -->
-  <footer>
-    <div class="footer-content">
-      <div class="footer-logo">
-        <img src="Stacks-removebg-preview.png" alt="StackIt Logo">
-        <div>
-          <h2>StackIt</h2>
-          <p>Your knowledge sharing partner.</p>
+        <!-- Answers Section -->
+        <div class="answers-title">Answers</div>
+        <div id="answer-list">Loading answers...</div>
+
+        <!-- Submit Answer -->
+        <div class="submit-section">
+            <div class="submit-title">Submit Your Answer</div>
+            <form id="answer-form">
+                <div id="quill-editor" style="height: 200px;"></div>
+                <br>
+                <button class="submit-btn" type="submit">Submit</button>
+                <input type="hidden" name="content" id="quill-content">
+            </form>
         </div>
-      </div>
-      <div class="footer-links">
-        <h4>Quick Links</h4>
-        <ul>
-          <li><a href="#">Home</a></li>
-          <li><a href="#">About</a></li>
-          <li><a href="#">Help</a></li>
-          <li><a href="#">Contact</a></li>
-        </ul>
-      </div>
     </div>
-    <div class="footer-bottom">
-      &copy; 2025 StackIt. All rights reserved.
-    </div>
-  </footer>
-  <script>
-    const quill = new Quill('#quill-editor', {
-        theme: 'snow',
-        placeholder: 'Type your answer here...',
-        modules: {
-        toolbar: [
-            ['bold', 'italic', 'underline'],
-            [{ 'list': 'ordered'}, { 'list': 'bullet' }],
-            ['link'],
-            [{ 'align': [] }],
-            ['clean']
-        ]
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <img src="Stacks-removebg-preview.png" alt="StackIt Logo">
+                <div>
+                    <h2>StackIt</h2>
+                    <p>Your knowledge sharing partner.</p>
+                </div>
+            </div>
+            <div class="footer-links">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Help</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2025 StackIt. All rights reserved.
+        </div>
+    </footer>
+
+    <script>
+        const quill = new Quill('#quill-editor', {
+            theme: 'snow',
+            placeholder: 'Type your answer here...',
+            modules: {
+                toolbar: [
+                    ['bold', 'italic', 'underline'],
+                    [{ 'list': 'ordered' }, { 'list': 'bullet' }],
+                    ['link'],
+                    [{ 'align': [] }],
+                    ['clean']
+                ]
+            }
+        });
+
+        const params = new URLSearchParams(window.location.search);
+        const questionId = params.get('id');
+
+        async function loadQuestionAndAnswers() {
+            try {
+                const resQ = await fetch(`http://localhost:5000/api/questions/${questionId}`);
+                const question = await resQ.json();
+
+                document.getElementById('question-title').textContent = question.title;
+                document.getElementById('question-desc').innerHTML = question.description;
+                document.getElementById('breadcrumb').textContent = `Question > ${question.title.slice(0, 20)}...`;
+
+                const tagsContainer = document.getElementById('question-tags');
+                tagsContainer.innerHTML = '';
+                question.tags.forEach(tag => {
+                    const span = document.createElement('span');
+                    span.className = 'tags';
+                    span.textContent = tag;
+                    tagsContainer.appendChild(span);
+                });
+
+                const answerList = document.getElementById('answer-list');
+                answerList.innerHTML = '';
+
+                if (question.answers && question.answers.length > 0) {
+                    question.answers.forEach((ans, index) => {
+                        const block = document.createElement('div');
+                        block.className = 'answer-block';
+                        block.innerHTML = `
+          <div class="votes">
+            <button class="vote-btn">&#9650;</button>
+            <div class="vote-count">${ans.votes || 0}</div>
+            <button class="vote-btn">&#9660;</button>
+          </div>
+          <div class="answer-content">
+            <div><strong>Answer ${index + 1}</strong></div>
+            <div>${ans.content}</div>
+          </div>
+        `;
+                        answerList.appendChild(block);
+                    });
+                } else {
+                    answerList.innerHTML = `<p>No answers yet. Be the first to answer!</p>`;
+                }
+
+            } catch (err) {
+                console.error('❌ Failed to load question:', err);
+                document.getElementById('question-title').textContent = 'Error loading question';
+            }
         }
-    });
 
-    // Optional: Submit handler to get content
-    document.querySelector('form').addEventListener('submit', function (e) {
-        e.preventDefault(); // prevent form from refreshing
-        const html = quill.root.innerHTML;
-        document.getElementById('quill-content').value = html;
-        alert("Submitted content:\n\n" + html); // just a test
-    });
-  </script>
+        document.getElementById('answer-form').addEventListener('submit', async function (e) {
+            e.preventDefault();
+            const html = quill.root.innerHTML;
+            if (html.trim() === '<p><br></p>' || html.trim() === '') {
+                alert('Answer cannot be empty!');
+                return;
+            }
+
+            try {
+                const res = await fetch(`http://localhost:5000/api/questions/${questionId}/answer`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ content: html })
+                });
+
+                if (!res.ok) {
+                    throw new Error('Failed to submit answer');
+                }
+
+                alert('✅ Answer submitted successfully!');
+                quill.setContents([]);
+                loadQuestionAndAnswers();
+
+            } catch (err) {
+                console.error('❌ Error submitting answer:', err);
+                alert('Something went wrong. Try again later.');
+            }
+        });
+
+        window.onload = loadQuestionAndAnswers;
+
+    </script>
+    
 </body>
+
 </html>

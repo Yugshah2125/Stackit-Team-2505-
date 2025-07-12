@@ -1,69 +1,300 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>StackIt - Home</title>
-  <link rel="stylesheet" href="home-style.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StackIt - Home</title>
+    <link rel="stylesheet" href="index.css">
 </head>
 <body>
-  <header>
-    <div class="logo">
-        <img src="Stacks-removebg-preview.png" alt="Stackit logo">
-        StackIt
+    <header>
+        <div class="logo">
+            <img src="Stacks-removebg-preview.png" alt="Stackit logo">
+            StackIt
+        </div>
+        <nav>
+            <a href="#">About</a>
+            <a href="#">For Teams</a>
+            <div class="notification">
+                <span class="notification-bell">🔔</span>
+                <span class="notification-dot"></span>
+            </div>
+            <div class="auth-section">
+                <button class="login-btn" id="openLoginModal">Log in</button>
+                <button class="signup-btn">Sign up</button>
+            </div>
+        </nav>
+    </header>
+    
+    <div class="container">
+        <div class="sidebar">
+            <h3>Home</h3>
+            <ul>
+                <li class="active">Questions</li>
+                <li>Tags</li>
+                <li>Users</li>
+                <li>Companies</li>
+            </ul>
+            
+            <h3>Filters</h3>
+            <ul>
+                <li>Newest</li>
+                <li>Unanswered</li>
+                <li>Active</li>
+                <li>Bountied</li>
+            </ul>
+        </div>
+        
+        <div class="main-content">
+            <button class="ask-btn">
+                <span>+</span>
+                <span>Ask New question</span>
+            </button>
+            
+            <div class="filter-tabs">
+                <div class="filter-tab active">Newest</div>
+                <div class="filter-tab">Unanswered</div>
+                <div class="filter-tab">Active</div>
+                <div class="filter-tab">Bountied</div>
+            </div>
+            
+            <div class="search-bar">
+                <input type="text" placeholder="Search...">
+            </div>
+            
+            <div class="question-list">
+                <div class="question">
+                    <div class="question-stats">
+                        <div class="vote-count">12</div>
+                        <div>votes</div>
+                        <div class="answer-count accepted">3</div>
+                        <div>answers</div>
+                        <div>42 views</div>
+                    </div>
+                    <div class="question-content">
+                        <div class="question-title">How to join 2 columns in a data set to make a separate column in SQL</div>
+                        <div class="question-excerpt">
+                            I do not know the code for it as I am a beginner. As an example what I need to do is like there is a column 1 containing First name, and column 2 consists of last name I want a column to combine ...
+                        </div>
+                        <div class="tags">
+                            <span class="tag">sql</span>
+                            <span class="tag">join</span>
+                            <span class="tag">beginner</span>
+                        </div>
+                        <div class="question-meta">
+                            <div class="actions">
+                                <button class="vote-btn upvoted">▲</button>
+                                <button class="vote-btn">▼</button>
+                            </div>
+                            <div class="user-info">
+                                <div class="user-avatar">U</div>
+                                <span class="username">User123</span>
+                                <span>asked 2 hours ago</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="question">
+                    <div class="question-stats">
+                        <div class="vote-count">24</div>
+                        <div>votes</div>
+                        <div class="answer-count">5</div>
+                        <div>answers</div>
+                        <div>128 views</div>
+                    </div>
+                    <div class="question-content">
+                        <div class="question-title">What's the difference between let and var in JavaScript?</div>
+                        <div class="question-excerpt">
+                            I've been learning JavaScript and came across both let and var for variable declaration. What are the key differences between them and when should I use each?
+                        </div>
+                        <div class="tags">
+                            <span class="tag">javascript</span>
+                            <span class="tag">variables</span>
+                            <span class="tag">es6</span>
+                        </div>
+                        <div class="question-meta">
+                            <div class="actions">
+                                <button class="vote-btn">▲</button>
+                                <button class="vote-btn">▼</button>
+                            </div>
+                            <div class="user-info">
+                                <div class="user-avatar">C</div>
+                                <span class="username">Coder456</span>
+                                <span>asked 1 day ago</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="question">
+                    <div class="question-stats">
+                        <div class="vote-count">8</div>
+                        <div>votes</div>
+                        <div class="answer-count">2</div>
+                        <div>answers</div>
+                        <div>76 views</div>
+                    </div>
+                    <div class="question-content">
+                        <div class="question-title">How to center a div horizontally and vertically in CSS?</div>
+                        <div class="question-excerpt">
+                            I'm trying to center a div both horizontally and vertically on the page. I've tried several methods but none seem to work consistently across different browsers.
+                        </div>
+                        <div class="tags">
+                            <span class="tag">css</span>
+                            <span class="tag">flexbox</span>
+                            <span class="tag">centering</span>
+                        </div>
+                        <div class="question-meta">
+                            <div class="actions">
+                                <button class="vote-btn">▲</button>
+                                <button class="vote-btn downvoted">▼</button>
+                            </div>
+                            <div class="user-info">
+                                <div class="user-avatar">W</div>
+                                <span class="username">WebDev789</span>
+                                <span>asked 3 days ago</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="pagination">
+                <a href="#">&laquo;</a>
+                <a href="#">1</a>
+                <a href="#" class="active">2</a>
+                <a href="#">3</a>
+                <a href="#">4</a>
+                <a href="#">5</a>
+                <a href="#">&raquo;</a>
+            </div>
+        </div>
     </div>
-    <nav>
-      <a href="#">Products</a>
-      <a href="#">About</a>
-      <a href="#">For Teams</a>
-      <div class="auth-buttons">
-        <button class="login-btn">Log in</button>
-        <button class="signup-btn">Sign up</button>
-      </div>
-    </nav>
-  </header>
 
-  <main class="main-content">
-    <button class="ask-btn">Ask Question</button>
-
-    <!-- Question 1 -->
-    <div class="question">
-      <div class="stats">
-        <div>2 votes</div>
-        <div>1 answer</div>
-      </div>
-      <div class="content">
-        <h3>What is JWT and how is it used in web apps?</h3>
-        <p>I heard about JWT for authentication but I don’t understand how it works. Can someone explain with a simple example?</p>
-        <div class="tags"><span class="tag">jwt</span> <span class="tag">auth</span></div>
-      </div>
+    <!-- Login Modal -->
+    <div class="modal-overlay" id="loginModal">
+        <div class="login-modal">
+            <div class="modal-header">
+                <h3>Log in to StackIt</h3>
+                <button class="close-modal" id="closeLoginModal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="loginEmail">Email</label>
+                    <input type="email" id="loginEmail" placeholder="your@email.com">
+                </div>
+                <div class="form-group">
+                    <label for="loginPassword">Password</label>
+                    <input type="password" id="loginPassword" placeholder="••••••••">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="auth-links">
+                    <a href="#">Forgot password?</a>
+                    <span> • </span>
+                    <a href="#">Sign up</a>
+                </div>
+                <button class="submit-btn" id="loginSubmit">Log in</button>
+            </div>
+        </div>
     </div>
+    
+    <script>
+        // Basic functionality
+        document.querySelector('.ask-btn').addEventListener('click', function() {
+            alert('Redirecting to question form...');
+            // In a real app, this would navigate to a new question page
+        });
+        
+        document.querySelectorAll('.question-title').forEach(title => {
+            title.addEventListener('click', function() {
+                alert('Redirecting to question details...');
+                // In a real app, this would navigate to the question detail page
+            });
+        });
+        
+        document.querySelector('.search-bar input').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                alert('Searching for: ' + this.value);
+                // In a real app, this would trigger a search
+            }
+        });
+        
+        // Filter tabs functionality
+        document.querySelectorAll('.filter-tab').forEach(tab => {
+            tab.addEventListener('click', function() {
+                document.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
+                this.classList.add('active');
+                alert('Filtering by: ' + this.textContent);
+            });
+        });
+        
+        // Vote buttons functionality
+        document.querySelectorAll('.vote-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                if (this.classList.contains('upvoted')) {
+                    this.classList.remove('upvoted');
+                } else if (this.classList.contains('downvoted')) {
+                    this.classList.remove('downvoted');
+                    if (this.textContent === '▲') {
+                        this.classList.add('upvoted');
+                    }
+                } else {
+                    if (this.textContent === '▲') {
+                        this.classList.add('upvoted');
+                    } else {
+                        this.classList.add('downvoted');
+                    }
+                }
+            });
+        });
 
-    <!-- Question 2 -->
-    <div class="question">
-      <div class="stats">
-        <div>5 votes</div>
-        <div>3 answers</div>
-      </div>
-      <div class="content">
-        <h3>How does React handle state updates?</h3>
-        <p>I’m trying to understand how React updates components when state changes. Why do some updates batch and others don’t?</p>
-        <div class="tags"><span class="tag">react</span> <span class="tag">state</span></div>
-      </div>
-    </div>
+        // Login Modal functionality
+        const loginModal = document.getElementById('loginModal');
+        const openLoginModalBtn = document.getElementById('openLoginModal');
+        const closeLoginModalBtn = document.getElementById('closeLoginModal');
+        const loginSubmitBtn = document.getElementById('loginSubmit');
 
-    <!-- Question 3 -->
-    <div class="question">
-      <div class="stats">
-        <div>0 votes</div>
-        <div>0 answers</div>
-      </div>
-      <div class="content">
-        <h3>What’s the difference between localStorage and sessionStorage?</h3>
-        <p>Both seem to store data in the browser, but I’m not clear on when to use each of them. Are there performance or security differences?</p>
-        <div class="tags"><span class="tag">javascript</span> <span class="tag">storage</span></div>
-      </div>
-    </div>
-  </main>
+        openLoginModalBtn.addEventListener('click', () => {
+            loginModal.style.display = 'flex';
+            document.body.style.overflow = 'hidden'; // Prevent scrolling when modal is open
+        });
+
+        closeLoginModalBtn.addEventListener('click', () => {
+            loginModal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        });
+
+        loginSubmitBtn.addEventListener('click', () => {
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
+            
+            if (email && password) {
+                alert(`Logging in with email: ${email}`);
+                loginModal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+                
+                // In a real app, you would replace the auth buttons with user info
+                const authSection = document.querySelector('.auth-section');
+                authSection.innerHTML = `
+                    <div class="user-dropdown">
+                        <div class="user-avatar small">${email.charAt(0).toUpperCase()}</div>
+                        <span style="color: white; font-weight: 500;">${email.split('@')[0]}</span>
+                    </div>
+                `;
+            } else {
+                alert('Please enter both email and password');
+            }
+        });
+
+        // Close modal when clicking outside
+        window.addEventListener('click', (e) => {
+            if (e.target === loginModal) {
+                loginModal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        });
+    </script>
 </body>
 </html>

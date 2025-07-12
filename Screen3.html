@@ -4,46 +4,49 @@
   <meta charset="UTF-8">
   <title>StackIt - Q&A</title>
   <link rel="stylesheet" href="style.css">
+  <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+  <!-- Quill Script -->
+  <script src="https://cdn.quilljs.com/1.3.6/quill.min.js"></script>
+
 </head>
 <body>
-    <header>
-        <div class="logo">
-            <img src="Stacks-removebg-preview.jpg" alt="Stackit logo">
-            StackIt
-        </div>
-        <nav>
-            <a href="#">About</a>
-            <a href="#">For Teams</a>
-            <div class="notification">
-                <span class="notification-bell">🔔</span>
-                <span class="notification-dot"></span>
-            </div>
-            <div class="auth-section">
-                <button class="login-btn" id="openLoginModal">Log in</button>
-                <button class="signup-btn">Sign up</button>
-            </div>
-        </nav>
-    </header>
+  <header>
+    <div class="logo">
+      <img src="Stacks-removebg-preview.png" alt="StackIt logo">
+      StackIt
+    </div>
+    <nav>
+      <a href="#">About</a>
+      <a href="#">For Teams</a>
+      <div class="notification">
+        <span class="notification-bell">🔔</span>
+        <span class="notification-dot"></span>
+      </div>
+      <div class="auth-section">
+        <button class="login-btn" id="openLoginModal">Log in</button>
+        <button class="signup-btn">Sign up</button>
+      </div>
+    </nav>
+  </header>
 
   <div class="container">
-    <div class="ask-section">
-      <div class="ask-title">Ask a New Question</div>
-      <form>
-        <input type="text" placeholder="Enter your question title..." required>
-        <textarea placeholder="Describe your question in detail..." required></textarea>
-        <button class="submit-btn" type="submit">Ask Question</button>
-      </form>
-    </div>
 
+    <!-- Breadcrumb -->
     <div class="breadcrumb">Question &gt; How to join 2…</div>
+
+    <!-- Question Display -->
     <h2>How to join 2 columns in a data set to make a separate column in SQL</h2>
-    <span class="tags">Tags</span>
-    <span class="tags">Tags</span>
+    <span class="tags">sql</span>
+    <span class="tags">join</span>
+    <span class="tags">beginner</span>
+
     <div class="question-desc">
       I do not know the code for it as I am a beginner. As an example what I need to do is like there is a column 1 containing First name and column 2 consists of last name. I want a column to combine
     </div>
 
+    <!-- Answers Section -->
     <div class="answers-title">Answers</div>
+
     <div class="answer-block">
       <div class="votes">
         <button class="vote-btn">&#9650;</button>
@@ -52,11 +55,16 @@
       </div>
       <div class="answer-content">
         <div><strong>Answer 1</strong></div>
-        <div>The <code>||</code> Operator.<br>
-        The <code>+</code> Operator.<br>
-        The <code>CONCAT</code> Function.</div>
+        <div>
+          You can use SQL functions to combine two columns:
+          <ul>
+            <li><code>SELECT FirstName || ' ' || LastName AS FullName FROM your_table;</code> (for PostgreSQL, SQLite)</li>
+            <li><code>SELECT CONCAT(FirstName, ' ', LastName) AS FullName FROM your_table;</code> (for MySQL, SQL Server)</li>
+          </ul>
+        </div>
       </div>
     </div>
+
     <div class="answer-block">
       <div class="votes">
         <button class="vote-btn">&#9650;</button>
@@ -69,14 +77,64 @@
       </div>
     </div>
 
+    <!-- Submit Answer -->
     <div class="submit-section">
       <div class="submit-title">Submit Your Answer</div>
       <form>
-        <textarea placeholder="Type your answer here..." required></textarea>
+        <div id="quill-editor" style="height: 200px;"></div>
         <br>
         <button class="submit-btn" type="submit">Submit</button>
+        <input type="hidden" name="content" id="quill-content">
       </form>
     </div>
   </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-logo">
+        <img src="Stacks-removebg-preview.png" alt="StackIt Logo">
+        <div>
+          <h2>StackIt</h2>
+          <p>Your knowledge sharing partner.</p>
+        </div>
+      </div>
+      <div class="footer-links">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Help</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      &copy; 2025 StackIt. All rights reserved.
+    </div>
+  </footer>
+  <script>
+    const quill = new Quill('#quill-editor', {
+        theme: 'snow',
+        placeholder: 'Type your answer here...',
+        modules: {
+        toolbar: [
+            ['bold', 'italic', 'underline'],
+            [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+            ['link'],
+            [{ 'align': [] }],
+            ['clean']
+        ]
+        }
+    });
+
+    // Optional: Submit handler to get content
+    document.querySelector('form').addEventListener('submit', function (e) {
+        e.preventDefault(); // prevent form from refreshing
+        const html = quill.root.innerHTML;
+        document.getElementById('quill-content').value = html;
+        alert("Submitted content:\n\n" + html); // just a test
+    });
+  </script>
 </body>
 </html>

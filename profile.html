@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>User Profile</title>
+  <link rel="stylesheet" href="profile.css" />
+  
+</head>
+<body>
+  <div class="profile-container">
+    <img id="profilePic" src="" class="profile-pic" />
+    <div class="username" id="profileUsername">User</div>
+    <div class="email" id="profileEmail">user@example.com</div>
+    <div class="bio" id="profileBio">No bio yet.</div>
+    <button class="edit-btn" onclick="alert('Edit Profile Coming Soon')">Edit Profile</button>
+  </div>
+
+  <script>
+    const username = localStorage.getItem("username") || "User123";
+    const email = localStorage.getItem("email") || "user@example.com";
+    const bio = localStorage.getItem("bio") || "No bio yet.";
+    const profilePic = localStorage.getItem("profilePic") || `https://i.pravatar.cc/150?u=${username}`;
+
+    document.getElementById("profileUsername").textContent = username;
+    document.getElementById("profileEmail").textContent = email;
+    document.getElementById("profileBio").textContent = bio;
+    document.getElementById("profilePic").src = profilePic;
+  </script>
+</body>
+</html>

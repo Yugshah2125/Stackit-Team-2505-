@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>User Profile</title>
+  <link rel="stylesheet" href="css/home-style.css" />
+<link rel="stylesheet" href="edit.css"></head>
+<body>
+  <div class="profile-container">
+    <img id="profilePic" src="" class="profile-pic" />
+    <div class="username" id="profileUsername"></div>
+    <div class="email" id="profileEmail"></div>
+    <div class="bio" id="profileBio"></div>
+
+    <button class="edit-btn" onclick="toggleEdit(true)">Edit Profile</button>
+
+    <form id="editForm">
+      <label for="newPic">Profile Picture URL</label>
+      <input type="text" id="newPic" />
+
+      <label for="newUsername">Username</label>
+      <input type="text" id="newUsername" />
+
+      <label for="newEmail">Email</label>
+      <input type="email" id="newEmail" />
+
+      <label for="newBio">Bio</label>
+      <textarea id="newBio" rows="3"></textarea>
+
+      <button type="button" class="save-btn" onclick="saveProfile()">Save Changes</button>
+    </form>
+  </div>
+
+  <script>
+    // Load from localStorage
+    function loadProfile() {
+      const username = localStorage.getItem("username") || "User";
+      const email = localStorage.getItem("email") || "user@example.com";
+      const bio = localStorage.getItem("bio") || "No bio yet.";
+      const pic = localStorage.getItem("profilePic") || `https://i.pravatar.cc/150?u=${username}`;
+
+      document.getElementById("profileUsername").textContent = username;
+      document.getElementById("profileEmail").textContent = email;
+      document.getElementById("profileBio").textContent = bio;
+      document.getElementById("profilePic").src = pic;
+
+      // prefill form
+      document.getElementById("newUsername").value = username;
+      document.getElementById("newEmail").value = email;
+      document.getElementById("newBio").value = bio;
+      document.getElementById("newPic").value = pic;
+    }
+
+    function toggleEdit(show) {
+      document.getElementById("editForm").style.display = show ? "block" : "none";
+    }
+
+    function saveProfile() {
+      const newUsername = document.getElementById("newUsername").value.trim();
+      const newEmail = document.getElementById("newEmail").value.trim();
+      const newBio = document.getElementById("newBio").value.trim();
+      const newPic = document.getElementById("newPic").value.trim();
+
+      // Save to localStorage
+      localStorage.setItem("username", newUsername);
+      localStorage.setItem("email", newEmail);
+      localStorage.setItem("bio", newBio);
+      localStorage.setItem("profilePic", newPic);
+
+      // Reload profile
+      loadProfile();
+      toggleEdit(false);
+      alert("Profile updated successfully!");
+    }
+
+    // On load
+    loadProfile();
+  </script>
+</body>
+</html>

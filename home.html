@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>StackIt - Home</title>
     <link rel="stylesheet" href="home-style.css">
 </head>
+
 <body>
     <header>
         <div class="logo">
@@ -20,15 +22,12 @@
                 <span class="notification-dot"></span>
             </div>
             <div class="auth-section">
-                <a href="login.html">
-                <button class="login-btn" id="openLoginModal">Log in</button></a>
-                <a href="signup.html">
+                <button class="login-btn" id="openLoginModal">Log in</button>
                 <button class="signup-btn">Sign up</button>
-                </a>
             </div>
         </nav>
     </header>
-    
+
     <div class="container">
         <div class="sidebar">
             <h3>Home</h3>
@@ -38,7 +37,7 @@
                 <li>Users</li>
                 <li>Companies</li>
             </ul>
-            
+
             <h3>Filters</h3>
             <ul>
                 <li>Newest</li>
@@ -47,122 +46,25 @@
                 <li>Bountied</li>
             </ul>
         </div>
-        
+
         <div class="main-content">
-            <button class="ask-btn">
-                <span>+</span>
+            <button class="ask-btn" onclick="window.location.href='ask.html'">
                 <span>Ask New question</span>
             </button>
-            
+
             <div class="filter-tabs">
                 <div class="filter-tab active">Newest</div>
                 <div class="filter-tab">Unanswered</div>
                 <div class="filter-tab">Active</div>
                 <div class="filter-tab">Bountied</div>
             </div>
-            
+
             <div class="search-bar">
                 <input type="text" placeholder="Search...">
             </div>
-            
-            <div class="question-list">
-                <div class="question">
-                    <div class="question-stats">
-                        <div class="vote-count">12</div>
-                        <div>votes</div>
-                        <div class="answer-count accepted">3</div>
-                        <div>answers</div>
-                        <div>42 views</div>
-                    </div>
-                    <div class="question-content">
-                        <div class="question-title">How to join 2 columns in a data set to make a separate column in SQL</div>
-                        <div class="question-excerpt">
-                            I do not know the code for it as I am a beginner. As an example what I need to do is like there is a column 1 containing First name, and column 2 consists of last name I want a column to combine ...
-                        </div>
-                        <div class="tags">
-                            <span class="tag">sql</span>
-                            <span class="tag">join</span>
-                            <span class="tag">beginner</span>
-                        </div>
-                        <div class="question-meta">
-                            <div class="actions">
-                                <button class="vote-btn upvoted">▲</button>
-                                <button class="vote-btn">▼</button>
-                            </div>
-                            <div class="user-info">
-                                <div class="user-avatar">U</div>
-                                <span class="username">User123</span>
-                                <span>asked 2 hours ago</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="question">
-                    <div class="question-stats">
-                        <div class="vote-count">24</div>
-                        <div>votes</div>
-                        <div class="answer-count">5</div>
-                        <div>answers</div>
-                        <div>128 views</div>
-                    </div>
-                    <div class="question-content">
-                        <div class="question-title">What's the difference between let and var in JavaScript?</div>
-                        <div class="question-excerpt">
-                            I've been learning JavaScript and came across both let and var for variable declaration. What are the key differences between them and when should I use each?
-                        </div>
-                        <div class="tags">
-                            <span class="tag">javascript</span>
-                            <span class="tag">variables</span>
-                            <span class="tag">es6</span>
-                        </div>
-                        <div class="question-meta">
-                            <div class="actions">
-                                <button class="vote-btn">▲</button>
-                                <button class="vote-btn">▼</button>
-                            </div>
-                            <div class="user-info">
-                                <div class="user-avatar">C</div>
-                                <span class="username">Coder456</span>
-                                <span>asked 1 day ago</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="question">
-                    <div class="question-stats">
-                        <div class="vote-count">8</div>
-                        <div>votes</div>
-                        <div class="answer-count">2</div>
-                        <div>answers</div>
-                        <div>76 views</div>
-                    </div>
-                    <div class="question-content">
-                        <div class="question-title">How to center a div horizontally and vertically in CSS?</div>
-                        <div class="question-excerpt">
-                            I'm trying to center a div both horizontally and vertically on the page. I've tried several methods but none seem to work consistently across different browsers.
-                        </div>
-                        <div class="tags">
-                            <span class="tag">css</span>
-                            <span class="tag">flexbox</span>
-                            <span class="tag">centering</span>
-                        </div>
-                        <div class="question-meta">
-                            <div class="actions">
-                                <button class="vote-btn">▲</button>
-                                <button class="vote-btn downvoted">▼</button>
-                            </div>
-                            <div class="user-info">
-                                <div class="user-avatar">W</div>
-                                <span class="username">WebDev789</span>
-                                <span>asked 3 days ago</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
+
+            <div class="question-list" id="questionList"></div>
+
             <div class="pagination">
                 <a href="#">&laquo;</a>
                 <a href="#">1</a>
@@ -175,40 +77,120 @@
         </div>
     </div>
 
-    
-    <script>
-        // Basic functionality
-        document.querySelector('.ask-btn').addEventListener('click', function() {
-            alert('Redirecting to question form...');
-            // In a real app, this would navigate to a new question page
+
+<script>
+    // Ask button redirects to ask.html
+    document.querySelector('.ask-btn').addEventListener('click', function () {
+        window.location.href = 'ask.html';
+    });
+
+    // Filter tab behavior
+    document.querySelectorAll('.filter-tab').forEach(tab => {
+        tab.addEventListener('click', function () {
+            document.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
+            this.classList.add('active');
+            // Filtering logic can be added later here
         });
-        
-        document.querySelectorAll('.question-title').forEach(title => {
-            title.addEventListener('click', function() {
-                alert('Redirecting to question details...');
-                // In a real app, this would navigate to the question detail page
+    });
+
+    // Search field behavior (Enter key)
+    document.querySelector('.search-bar input').addEventListener('keypress', function (e) {
+        if (e.key === 'Enter') {
+            // Implement actual search logic here if needed
+        }
+    });
+
+    // =======================
+    // Load Questions from API
+    // =======================
+    async function loadQuestions() {
+        console.log('🔄 loadQuestions called');
+        try {
+            const res = await fetch('http://localhost:5000/api/questions');
+            const questions = await res.json();
+            const container = document.getElementById('questionList');
+            container.innerHTML = '';
+
+            questions.reverse().forEach(q => {
+                const createdAt = new Date(q.createdAt);
+                const timeAgo = formatTimeAgo(createdAt);
+
+                const questionEl = document.createElement('div');
+                questionEl.className = 'question';
+                questionEl.innerHTML = `
+                    <div class="question-stats">
+                        <div class="vote-count">${q.votes}</div>
+                        <div>votes</div>
+                        <div class="answer-count">${q.answers}</div>
+                        <div>answers</div>
+                        <div>${q.views} views</div>
+                    </div>
+                    <div class="question-content">
+                        <div class="question-title" data-id="${q._id}" style="cursor:pointer; color:blue; text-decoration:underline;">
+                            ${q.title} <span style="font-size: 14px; color: gray;">↗</span>
+                        </div>
+
+                        <div class="question-excerpt">${stripHTML(q.description).slice(0, 150)}...</div>
+                        <div class="tags">
+                            ${q.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
+                        </div>
+                        <div class="question-meta">
+                            <div class="actions">
+                                <button class="vote-btn">▲</button>
+                                <button class="vote-btn">▼</button>
+                            </div>
+                            <div class="user-info">
+                                <div class="user-avatar">U</div>
+                                <span class="username">User</span>
+                                <span>asked ${timeAgo}</span>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                container.appendChild(questionEl);
             });
-        });
-        
-        document.querySelector('.search-bar input').addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                alert('Searching for: ' + this.value);
-                // In a real app, this would trigger a search
+
+            attachVoteHandlers();
+            attachQuestionClickHandlers(); // ✅ Make questions clickable
+
+        } catch (err) {
+            console.error('Error loading questions:', err);
+        }
+    }
+
+    // Remove HTML tags from description
+    function stripHTML(html) {
+        let div = document.createElement("div");
+        div.innerHTML = html;
+        return div.textContent || div.innerText || "";
+    }
+
+    // Format timestamp into "time ago"
+    function formatTimeAgo(date) {
+        const seconds = Math.floor((new Date() - date) / 1000);
+        const intervals = [
+            { label: 'year', seconds: 31536000 },
+            { label: 'month', seconds: 2592000 },
+            { label: 'week', seconds: 604800 },
+            { label: 'day', seconds: 86400 },
+            { label: 'hour', seconds: 3600 },
+            { label: 'minute', seconds: 60 },
+            { label: 'second', seconds: 1 },
+        ];
+
+        for (const interval of intervals) {
+            const count = Math.floor(seconds / interval.seconds);
+            if (count >= 1) {
+                return `${count} ${interval.label}${count > 1 ? 's' : ''} ago`;
             }
-        });
-        
-        // Filter tabs functionality
-        document.querySelectorAll('.filter-tab').forEach(tab => {
-            tab.addEventListener('click', function() {
-                document.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
-                this.classList.add('active');
-                alert('Filtering by: ' + this.textContent);
-            });
-        });
-        
-        // Vote buttons functionality
+        }
+        return 'just now';
+    }
+
+    // Handle vote button UI
+    function attachVoteHandlers() {
         document.querySelectorAll('.vote-btn').forEach(btn => {
-            btn.addEventListener('click', function() {
+            btn.addEventListener('click', function () {
                 if (this.classList.contains('upvoted')) {
                     this.classList.remove('upvoted');
                 } else if (this.classList.contains('downvoted')) {
@@ -225,32 +207,22 @@
                 }
             });
         });
-    </script>
+    }
 
-        <footer>
-            <div class="footer-content">
-                <div class="footer-logo">
-                    <img src="Stacks-removebg-preview.png" alt="StackIt Logo">
-                    <div>
-                        <h2>StackIt</h2>
-                        <p>Your knowledge sharing partner.</p>
-                    </div>
-                </div>
-                <div class="footer-links">
-                    <h4>Quick Links</h4>
-                    <ul>
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">About</a></li>
-                        <li><a href="#">Help</a></li>
-                        <li><a href="#">Contact</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                &copy; 2025 StackIt. All rights reserved.
-            </div>
-        </footer>
-</body>
+    // ✅ Handle question title click (redirect to answer.html)
+    function attachQuestionClickHandlers() {
+        document.querySelectorAll('.question-title').forEach(title => {
+            title.addEventListener('click', function () {
+                const questionId = this.getAttribute('data-id');
+                window.location.href = `answer.html?id=${questionId}`;
+            });
+        });
+    }
+
+    // Final trigger
+    window.onload = loadQuestions;
+</script>
 
 </body>
+
 </html>

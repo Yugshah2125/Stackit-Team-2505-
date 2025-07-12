@@ -1,19 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
   <title>StackIt - Q&A</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="container">
     <header>
         <div class="logo">
             <img src="Stacks-removebg-preview.jpg" alt="Stackit logo">
             StackIt
         </div>
         <nav>
-            <a href="#">Products</a>
             <a href="#">About</a>
             <a href="#">For Teams</a>
             <div class="notification">
@@ -27,27 +25,58 @@
         </nav>
     </header>
 
-    <section class="ask-section">
-      <h2>Ask a Question</h2>
+  <div class="container">
+    <div class="ask-section">
+      <div class="ask-title">Ask a New Question</div>
       <form>
-        <input type="text" placeholder="Question title" required />
-        <textarea placeholder="Describe your question" required></textarea>
-        <button type="submit" class="btn">Ask</button>
+        <input type="text" placeholder="Enter your question title..." required>
+        <textarea placeholder="Describe your question in detail..." required></textarea>
+        <button class="submit-btn" type="submit">Ask Question</button>
       </form>
-    </section>
+    </div>
 
-    <section class="question">
-      <h2>How to join 2 columns in SQL?</h2>
-      <p>I want to combine first and last name columns into one.</p>
-    </section>
+    <div class="breadcrumb">Question &gt; How to join 2…</div>
+    <h2>How to join 2 columns in a data set to make a separate column in SQL</h2>
+    <span class="tags">Tags</span>
+    <span class="tags">Tags</span>
+    <div class="question-desc">
+      I do not know the code for it as I am a beginner. As an example what I need to do is like there is a column 1 containing First name and column 2 consists of last name. I want a column to combine
+    </div>
 
-    <section class="submit-answer">
-      <h3>Submit Your Answer</h3>
+    <div class="answers-title">Answers</div>
+    <div class="answer-block">
+      <div class="votes">
+        <button class="vote-btn">&#9650;</button>
+        <div class="vote-count">1</div>
+        <button class="vote-btn">&#9660;</button>
+      </div>
+      <div class="answer-content">
+        <div><strong>Answer 1</strong></div>
+        <div>The <code>||</code> Operator.<br>
+        The <code>+</code> Operator.<br>
+        The <code>CONCAT</code> Function.</div>
+      </div>
+    </div>
+    <div class="answer-block">
+      <div class="votes">
+        <button class="vote-btn">&#9650;</button>
+        <div class="vote-count">0</div>
+        <button class="vote-btn">&#9660;</button>
+      </div>
+      <div class="answer-content">
+        <div><strong>Answer 2</strong></div>
+        <div class="details-link">Details</div>
+      </div>
+    </div>
+
+    <div class="submit-section">
+      <div class="submit-title">Submit Your Answer</div>
       <form>
-        <textarea placeholder="Your answer" required></textarea>
-        <button type="submit" class="btn">Submit</button>
+        <textarea placeholder="Type your answer here..." required></textarea>
+        <br>
+        <button class="submit-btn" type="submit">Submit</button>
       </form>
-    </section>
+    </div>
   </div>
 </body>
 </html>

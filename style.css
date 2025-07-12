@@ -5,7 +5,7 @@ body {
   padding: 0;
 }
 .container {
-  max-width: 700px;
+  max-width: 960px;
   margin: 30px auto;
   background: #fff;
   border-radius: 12px;
@@ -176,15 +176,7 @@ h2 {
   padding: 12px 16px;
   flex: 1;
 }
-.ask-section {
-  margin-bottom: 32px;
-  border-bottom: 1px solid #e5e7eb;
-  padding-bottom: 16px;
-}
-.ask-title {
-  font-weight: bold;
-  margin-bottom: 8px;
-}
+
 .submit-section {
   margin-top: 32px;
   border-top: 1px solid #e5e7eb;
@@ -220,4 +212,67 @@ textarea, input[type="text"] {
   color: #3b82f6;
   text-decoration: underline;
   cursor: pointer;
+}
+
+footer {
+  background-color: #2C3E50;
+  color: white;
+  padding: 30px 24px 10px;
+  margin-top: 40px;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  max-width: 1260px;
+  margin: 0 auto;
+  gap: 40px;
+}
+
+.footer-logo {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.footer-logo img {
+  height: 50px;
+}
+
+.footer-logo h2 {
+  font-size: 22px;
+  margin-bottom: 4px;
+}
+
+.footer-links h4 {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.footer-links ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-links li {
+  margin-bottom: 6px;
+}
+
+.footer-links a {
+  text-decoration: none;
+  color: #dfe6ec;
+  font-size: 14px;
+  transition: color 0.2s;
+}
+
+.footer-links a:hover {
+  color: #ffffff;
+}
+
+.footer-bottom {
+  text-align: center;
+  font-size: 13px;
+  margin-top: 24px;
+  color: #ccc;
 }
